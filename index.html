@@ -1,0 +1,4903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Focca Sip App</title>
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f7f2df;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+.phone {
+    width: 350px;
+    height: 700px;
+    max-width: 100%;
+    background: #fffdf5;
+    border: 5px solid #18201e;
+    border-radius: 38px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+
+/* =========================================================
+   SCREENS
+========================================================= */
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.screen.active {
+    display: block;
+}
+
+
+/* =========================================================
+   SPEAKER
+========================================================= */
+
+.speaker {
+    width: 65px;
+    height: 9px;
+    background: #18201e;
+    border-radius: 20px;
+    margin: 10px auto 0;
+}
+
+
+/* =========================================================
+   SCREEN 1 — LOGIN
+========================================================= */
+
+#screen1 {
+    background: #fffdf5;
+}
+
+.welcome-content {
+    padding: 12px 25px 0;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    text-align: center;
+    margin-top: 3px;
+}
+
+.logo-icon {
+    width: 62px;
+    height: 62px;
+    margin: auto;
+    border-radius: 50%;
+    background: #f4eee0;
+    border: 2px solid #6f776b;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.logo h1 {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    margin-top: 4px;
+    letter-spacing: 1px;
+    color: #222b25;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.welcome h2 {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    color: #18201e;
+    margin-bottom: 4px;
+}
+
+.welcome p {
+    font-size: 12px;
+    color: #777;
+}
+
+
+/* =========================================================
+   ACCOUNT BUTTONS
+========================================================= */
+
+.account-buttons {
+    display: flex;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.account-buttons button {
+    flex: 1;
+    height: 37px;
+    border-radius: 11px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.create-btn {
+    background: #319c94;
+    color: white;
+    border: 1px solid #319c94;
+}
+
+.login-btn {
+    background: white;
+    color: #319c94;
+    border: 1px solid #319c94;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.login-form {
+    margin-top: 14px;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+.field label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #343a35;
+}
+
+.input-box {
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    height: 36px;
+    padding: 0 38px 0 12px;
+    border: 1px solid #d8d5c9;
+    border-radius: 10px;
+    background: white;
+    outline: none;
+    font-size: 11px;
+}
+
+.input-box input:focus {
+    border-color: #319c94;
+    box-shadow: 0 0 0 2px rgba(49,156,148,0.12);
+}
+
+.input-icon {
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    color: #8c9189;
+    font-size: 13px;
+}
+
+.forgot {
+    display: block;
+    text-align: right;
+    margin-top: -3px;
+    margin-bottom: 12px;
+    color: #555;
+    text-decoration: none;
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.social-title {
+    text-align: center;
+    color: #999;
+    font-size: 9px;
+    margin-bottom: 7px;
+    position: relative;
+}
+
+.social-title::before,
+.social-title::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: #ddd;
+}
+
+.social-title::before {
+    left: 0;
+}
+
+.social-title::after {
+    right: 0;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.social-btn {
+    flex: 1;
+    height: 34px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.google {
+    color: #4285f4;
+}
+
+.apple {
+    color: #111;
+}
+
+
+/* =========================================================
+   WELCOME ART
+========================================================= */
+
+.welcome-art {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+}
+
+.person {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 135px;
+    height: 175px;
+}
+
+.head {
+    position: absolute;
+    top: 3px;
+    left: 32px;
+    width: 72px;
+    height: 78px;
+    background: #f0c79d;
+    border: 3px solid #18201e;
+    border-radius: 48%;
+    z-index: 2;
+}
+
+.hair {
+    position: absolute;
+    top: -5px;
+    left: 25px;
+    width: 88px;
+    height: 62px;
+    background: #292522;
+    border-radius: 55% 55% 25% 25%;
+    z-index: 3;
+}
+
+.eye {
+    position: absolute;
+    top: 36px;
+    width: 7px;
+    height: 7px;
+    background: #18201e;
+    border-radius: 50%;
+    z-index: 4;
+}
+
+.eye.left {
+    left: 17px;
+}
+
+.eye.right {
+    right: 17px;
+}
+
+.smile {
+    position: absolute;
+    top: 56px;
+    left: 22px;
+    width: 28px;
+    height: 12px;
+    border-bottom: 3px solid #18201e;
+    border-radius: 50%;
+    z-index: 4;
+}
+
+.body {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 115px;
+    height: 105px;
+    background: #319c94;
+    border: 3px solid #18201e;
+    border-radius: 60px 60px 0 0;
+}
+
+
+/* =========================================================
+   SCREEN 2 — HOME
+========================================================= */
+
+#screen2 {
+    background: #fffdf5;
+}
+
+.home-header {
+    padding: 8px 18px 0;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background: #d9e6dc;
+    border: 2px solid #319c94;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+}
+
+.greeting {
+    font-size: 9px;
+    color: #777;
+}
+
+.brand {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #18201e;
+}
+
+.home-icons {
+    display: flex;
+    gap: 12px;
+    font-size: 17px;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -7px;
+    width: 14px;
+    height: 14px;
+    background: #319c94;
+    color: white;
+    border-radius: 50%;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search {
+    margin-top: 12px;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    height: 37px;
+    border: 1px solid #ddd8ca;
+    border-radius: 11px;
+    padding: 0 35px;
+    outline: none;
+    background: white;
+    font-size: 11px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    font-size: 15px;
+    color: #777;
+}
+
+
+/* =========================================================
+   HOME MAIN
+========================================================= */
+
+.home-main {
+    padding: 14px 18px 70px;
+    height: 570px;
+    overflow-y: auto;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #202724;
+    margin-bottom: 9px;
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+.categories {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}
+
+.category {
+    min-width: 55px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.category-image {
+    width: 51px;
+    height: 51px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.category span {
+    font-size: 8px;
+    color: #444;
+}
+
+
+/* =========================================================
+   POPULAR
+========================================================= */
+
+.popular-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.see-all {
+    font-size: 9px;
+    color: #319c94;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+}
+
+.products::-webkit-scrollbar {
+    display: none;
+}
+
+.product {
+    min-width: 135px;
+    background: white;
+    border-radius: 13px;
+    overflow: hidden;
+    border: 1px solid #eee9dc;
+    box-shadow: 0 3px 10px rgba(0,0,0,.05);
+}
+
+.product-image {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 52px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.matcha {
+    background: #b9ddd5;
+}
+
+.fruit {
+    background: #f2d8a8;
+}
+
+
+/* =========================================================
+   PRODUCT INFO
+========================================================= */
+
+.product-info {
+    padding: 7px;
+}
+
+.product-name {
+    font-size: 9px;
+    font-weight: bold;
+    color: #252b28;
+    min-height: 24px;
+}
+
+.price {
+    font-size: 10px;
+    font-weight: bold;
+    color: #319c94;
+    margin-top: 3px;
+}
+
+.add {
+    float: right;
+    width: 21px;
+    height: 21px;
+    background: #319c94;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   FEATURED
+========================================================= */
+
+.featured {
+    margin-top: 17px;
+}
+
+.feature-card {
+    background: white;
+    border: 1px solid #eee9dc;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.feature-image {
+    height: 100px;
+    background: #ead6b8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px;
+    overflow: hidden;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.feature-info {
+    padding: 9px;
+}
+
+.feature-info h3 {
+    font-size: 11px;
+}
+
+.feature-info p {
+    font-size: 8px;
+    color: #777;
+    margin-top: 3px;
+}
+
+.feature-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.feature-price {
+    color: #319c94;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.order-btn {
+    border: none;
+    background: #319c94;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+========================================================= */
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 62px;
+    background: white;
+    border-top: 1px solid #e2dfd4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 20;
+}
+
+.nav-item {
+    width: 25%;
+    text-align: center;
+    color: #999;
+    font-size: 8px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.nav-icon {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.nav-item.active {
+    color: #319c94;
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    color: #319c94;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   INNER HEADER
+========================================================= */
+
+.inner-header {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 19px;
+    border-bottom: 1px solid #e8e2d5;
+}
+
+.back {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    border: none;
+    background: #f0eee3;
+    font-size: 19px;
+}
+
+.inner-title {
+    flex: 1;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: #18201e;
+}
+
+.small-cart {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    border: none;
+    background: #319c94;
+    color: white;
+}
+
+
+/* =========================================================
+   SCREEN 3 — CUSTOMIZE
+========================================================= */
+
+#screen3 {
+    background: #fffdf5;
+}
+
+.customize-main {
+    height: 570px;
+    overflow-y: auto;
+    padding: 15px 19px 90px;
+}
+
+.product-top {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.custom-product-image {
+    width: 92px;
+    height: 92px;
+    border-radius: 17px;
+    background: #b9ddd5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 53px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.custom-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-details h2 {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color: #202724;
+    margin-bottom: 4px;
+}
+
+.product-details p {
+    font-size: 9px;
+    color: #777;
+    line-height: 1.4;
+}
+
+.product-price {
+    margin-top: 6px;
+    color: #319c94;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.custom-section {
+    margin-top: 14px;
+}
+
+.custom-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.custom-title h3 {
+    font-size: 12px;
+    color: #252b28;
+}
+
+.required {
+    font-size: 8px;
+    color: #888;
+}
+
+.options {
+    display: flex;
+    gap: 8px;
+}
+
+.option {
+    flex: 1;
+    position: relative;
+}
+
+.option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.option label {
+    height: 41px;
+    border: 1px solid #ddd8ca;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 9px;
+    color: #444;
+}
+
+.option input:checked + label {
+    border: 2px solid #319c94;
+    background: #e5f2ef;
+    color: #217c75;
+    font-weight: bold;
+}
+
+.sugar-options {
+    display: flex;
+    gap: 6px;
+}
+
+.sugar {
+    flex: 1;
+    position: relative;
+}
+
+.sugar input {
+    position: absolute;
+    opacity: 0;
+}
+
+.sugar label {
+    height: 36px;
+    border: 1px solid #ddd8ca;
+    border-radius: 9px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 8px;
+    color: #555;
+}
+
+.sugar input:checked + label {
+    background: #319c94;
+    color: white;
+    border-color: #319c94;
+    font-weight: bold;
+}
+
+.addons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.addon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border: 1px solid #e2ddd1;
+    border-radius: 9px;
+    padding: 8px 10px;
+}
+
+.addon-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.addon-left input {
+    width: 14px;
+    height: 14px;
+    accent-color: #319c94;
+}
+
+.addon-name {
+    font-size: 9px;
+    color: #333;
+}
+
+.addon-price {
+    font-size: 8px;
+    color: #319c94;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    height: 50px;
+    resize: none;
+    border: 1px solid #ddd8ca;
+    border-radius: 9px;
+    padding: 8px;
+    outline: none;
+    font-size: 8px;
+}
+
+.custom-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 79px;
+    background: white;
+    border-top: 1px solid #e2ddd1;
+    padding: 9px 18px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.total-label {
+    font-size: 9px;
+    color: #777;
+}
+
+.total-price {
+    font-size: 15px;
+    font-weight: bold;
+    color: #18201e;
+}
+
+.main-btn {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    background: #319c94;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   SCREEN 4 — CHECKOUT
+========================================================= */
+
+#screen4 {
+    background: #fffdf5;
+}
+
+.checkout-main {
+    height: 510px;
+    overflow-y: auto;
+    padding: 15px 19px 90px;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 17px;
+}
+
+.step {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #319c94;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.line {
+    width: 34px;
+    height: 2px;
+    background: #319c94;
+}
+
+.checkout-section {
+    margin-bottom: 14px;
+}
+
+.checkout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.checkout-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #252b28;
+}
+
+.change {
+    color: #319c94;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.address-card {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+}
+
+.address-icon {
+    width: 29px;
+    height: 29px;
+    background: #e5f2ef;
+    color: #319c94;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.address-name {
+    font-size: 9px;
+    font-weight: bold;
+    color: #252b28;
+}
+
+.address-text {
+    font-size: 8px;
+    color: #777;
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+.payment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.payment {
+    position: relative;
+}
+
+.payment input {
+    position: absolute;
+    opacity: 0;
+}
+
+.payment label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    height: 41px;
+    padding: 0 10px;
+    background: white;
+    border: 1px solid #ded9cc;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 9px;
+    color: #333;
+}
+
+.payment input:checked + label {
+    border: 2px solid #319c94;
+    background: #e5f2ef;
+}
+
+.payment-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+    background: #f0eee3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.radio {
+    margin-left: auto;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+}
+
+.payment input:checked + label .radio {
+    border: 4px solid #319c94;
+}
+
+.order-card {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    padding: 9px;
+}
+
+.order-item {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+}
+
+.item-image {
+    width: 46px;
+    height: 46px;
+    border-radius: 9px;
+    background: #b9ddd5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 9px;
+    font-weight: bold;
+    color: #252b28;
+}
+
+.item-details {
+    font-size: 7px;
+    color: #888;
+    margin-top: 3px;
+}
+
+.item-price {
+    font-size: 9px;
+    font-weight: bold;
+    color: #319c94;
+}
+
+.summary {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    padding: 10px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 8px;
+    color: #777;
+}
+
+.summary-row.total {
+    border-top: 1px solid #eee9dc;
+    padding-top: 7px;
+    margin-top: 7px;
+    margin-bottom: 0;
+    color: #18201e;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.checkout-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-top: 1px solid #e2ddd1;
+    padding: 9px 18px;
+}
+
+.delivery-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.delivery {
+    font-size: 8px;
+    color: #777;
+}
+
+.delivery strong {
+    display: block;
+    color: #252b28;
+    font-size: 9px;
+    margin-top: 2px;
+}
+
+.final-total {
+    color: #319c94;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   SCREEN 5 — CONFIRMATION
+========================================================= */
+
+#screen5 {
+    background: #fffdf5;
+}
+
+.confirm-header {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #e8e2d5;
+}
+
+.confirm-title {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: #18201e;
+}
+
+.confirm-main {
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 23px 20px;
+    text-align: center;
+}
+
+.success-circle {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background: #e5f2ef;
+    border: 3px solid #319c94;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 17px;
+    animation: pop .5s ease;
+}
+
+.check {
+    font-size: 46px;
+    color: #319c94;
+    font-weight: bold;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-title {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: #18201e;
+    margin-bottom: 7px;
+}
+
+.success-text {
+    font-size: 10px;
+    color: #777;
+    line-height: 1.5;
+    max-width: 260px;
+    margin-bottom: 17px;
+}
+
+.order-number {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.order-label {
+    font-size: 8px;
+    color: #888;
+    margin-bottom: 3px;
+}
+
+.order-id {
+    font-size: 13px;
+    font-weight: bold;
+    color: #319c94;
+}
+
+.details {
+    width: 100%;
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.details-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: #252b28;
+    margin-bottom: 7px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 8px;
+    color: #777;
+}
+
+.detail-row strong {
+    color: #252b28;
+}
+
+.delivery-card {
+    width: 100%;
+    background: #e5f2ef;
+    border-radius: 11px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+.delivery-icon {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.delivery-text {
+    flex: 1;
+}
+
+.delivery-text span {
+    display: block;
+    font-size: 7px;
+    color: #66807c;
+    margin-bottom: 2px;
+}
+
+.delivery-text strong {
+    font-size: 9px;
+    color: #216f69;
+}
+
+.confirm-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.home-btn,
+.track-btn {
+    width: 100%;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.home-btn {
+    border: none;
+    background: #319c94;
+    color: white;
+}
+
+.track-btn {
+    border: 1px solid #319c94;
+    background: white;
+    color: #319c94;
+}
+
+
+/* =========================================================
+   ORDERS / FAVORITES / PROFILE
+========================================================= */
+
+#screen6,
+#screen7,
+#screen8 {
+    background: #fffdf5;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #18201e;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 10px;
+    display: none;
+    z-index: 100;
+}
+
+
+/* =========================================================
+   NEW FUNCTIONALITY — NOTIFICATION
+========================================================= */
+
+.notification-panel,
+.cart-panel,
+.settings-panel,
+.address-panel {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    max-width: calc(100% - 30px);
+    max-height: 520px;
+    overflow-y: auto;
+    background: #fffdf5;
+    border: 2px solid #18201e;
+    border-radius: 20px;
+    padding: 18px;
+    z-index: 500;
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    display: none;
+}
+
+.panel-title {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #18201e;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.panel-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 27px;
+    height: 27px;
+    border: none;
+    border-radius: 50%;
+    background: #f0eee3;
+    color: #18201e;
+    font-size: 15px;
+}
+
+.notification-item {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    padding: 11px;
+    margin-bottom: 8px;
+}
+
+.notification-item strong {
+    display: block;
+    color: #252b28;
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.notification-item span {
+    font-size: 8px;
+    color: #777;
+}
+
+.cart-item {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 11px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 8px;
+}
+
+.cart-item-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 9px;
+    background: #b9ddd5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-size: 9px;
+    font-weight: bold;
+    color: #252b28;
+}
+
+.cart-item-price {
+    font-size: 9px;
+    color: #319c94;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #777;
+    font-size: 10px;
+    padding: 25px 10px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd8ca;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.panel-btn {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 9px;
+    background: #319c94;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.panel-input {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #ddd8ca;
+    border-radius: 9px;
+    padding: 0 10px;
+    outline: none;
+    background: white;
+    font-size: 10px;
+    margin-bottom: 9px;
+}
+
+.panel-label {
+    display: block;
+    font-size: 9px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.setting-row {
+    background: white;
+    border: 1px solid #e1ddd1;
+    border-radius: 10px;
+    padding: 11px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-row span {
+    font-size: 10px;
+    color: #252b28;
+}
+
+.setting-row input {
+    accent-color: #319c94;
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.25);
+    z-index: 499;
+    display: none;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="phone">
+
+
+<!-- =====================================================
+     SCREEN 1 — LOGIN
+===================================================== -->
+
+<div class="screen active" id="screen1">
+
+    <div class="speaker"></div>
+
+    <div class="welcome-content">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <img
+                    src="focca sip logo.jpg"
+                    alt="Focca Sip Logo"
+                >
+
+            </div>
+
+            <h1>FOCCA SIP</h1>
+
+        </div>
+
+        <div class="welcome">
+
+            <h2>Welcome</h2>
+
+            <p>
+                Order your favorite tea and meals
+            </p>
+
+        </div>
+
+        <div class="account-buttons">
+
+            <button
+                class="create-btn"
+                onclick="window.location.href='https://accounts.google.com/signup'"
+            >
+                Create Account
+            </button>
+
+            <button
+                class="login-btn"
+                onclick="login()"
+            >
+                Login
+            </button>
+
+        </div>
+
+        <div class="login-form">
+
+            <div class="field">
+
+                <label>Email</label>
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email address"
+                    >
+
+                    <span class="input-icon">
+                        ✉
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="field">
+
+                <label>Password</label>
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                    >
+
+                    <span
+                        class="input-icon"
+                        onclick="togglePassword()"
+                        style="cursor:pointer"
+                    >
+                        👁
+                    </span>
+
+                </div>
+
+            </div>
+
+            <a
+                href="#"
+                class="forgot"
+                onclick="forgotPassword(); return false;"
+            >
+                Forgot Password?
+            </a>
+
+            <div class="social-title">
+                Social Login
+            </div>
+
+            <div class="social-buttons">
+
+                <button
+                    class="social-btn google"
+                    onclick="window.location.href='https://accounts.google.com/'"
+                >
+                    G
+                </button>
+
+                <button
+                    class="social-btn apple"
+                    onclick="window.location.href='https://appleid.apple.com/'"
+                >
+                    <span style="font-size:20px;">
+                        
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="welcome-art">
+
+        <div class="person">
+
+            <div class="hair"></div>
+
+            <div class="head">
+
+                <div class="eye left"></div>
+
+                <div class="eye right"></div>
+
+                <div class="smile"></div>
+
+            </div>
+
+            <div class="body"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 2 — HOME
+===================================================== -->
+
+<div class="screen" id="screen2">
+
+    <div class="speaker"></div>
+
+    <div class="home-header">
+
+        <div class="user-area">
+
+            <div class="user-info">
+
+                <div class="profile">
+                    👩🏻
+                </div>
+
+                <div>
+
+                    <div class="greeting">
+                        Good morning
+                    </div>
+
+                    <div class="brand">
+                        FOCCA SIP 🍵
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="home-icons">
+
+                <span
+                    onclick="showNotifications()"
+                    style="cursor:pointer"
+                >
+                    ♧
+                </span>
+
+                <span
+                    class="cart-icon"
+                    onclick="showCart()"
+                >
+
+                    🛒
+
+                    <span
+                        class="cart-count"
+                        id="cartCount"
+                    >
+                        0
+                    </span>
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="search">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search your favorite tea..."
+                oninput="searchProducts()"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="home-main">
+
+        <div class="section-title">
+            Categories
+        </div>
+
+        <div class="categories">
+
+            <div
+                class="category"
+                onclick="filterCategory('tea')"
+            >
+
+                <div
+                    class="category-image"
+                    style="background:#b9ddd5"
+                >
+                    🧋
+                </div>
+
+                <span>Milk Tea</span>
+
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('cake')"
+            >
+
+                <div
+                    class="category-image"
+                    style="background:#f0d8b9"
+                >
+                    🍰
+                </div>
+
+                <span>Cakes</span>
+
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('burger')"
+            >
+
+                <div
+                    class="category-image"
+                    style="background:#d9c8a9"
+                >
+                    🍔
+                </div>
+
+                <span>Burgers</span>
+
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('fries')"
+            >
+
+                <div
+                    class="category-image"
+                    style="background:#e8c7a9"
+                >
+                    🍟
+                </div>
+
+                <span>Fries</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="popular-header">
+
+            <div class="section-title">
+                Popular Items
+            </div>
+
+            <div
+                class="see-all"
+                onclick="showAllProducts()"
+            >
+                See All →
+            </div>
+
+        </div>
+
+
+        <div
+            class="products"
+            id="products"
+        >
+
+            <div
+                class="product"
+                data-name="oreo matcha creme"
+                data-category="tea"
+            >
+
+                <div class="product-image matcha">
+
+                    <img
+                        src="OreoMatchaCrème.jpg"
+                        alt="Oreo Matcha Crème"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Oreo Matcha Crème
+                    </div>
+
+                    <div class="price">
+                        ₱119
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="goCustomize()"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="fruit tea"
+                data-category="tea"
+            >
+
+                <div class="product-image fruit">
+
+                    <img
+                        src="fruittea.jpg"
+                        alt="Fruit Tea"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Fruit Tea
+                    </div>
+
+                    <div class="price">
+                        ₱119
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Fruit Tea',119,'fruit tea.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="matcha flurry"
+                data-category="tea"
+            >
+
+                <div class="product-image matcha">
+
+                    <img
+                        src="matcha-flurry.jpg"
+                        alt="Matcha Flurry"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Matcha Flurry
+                    </div>
+
+                    <div class="price">
+                        ₱129
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Matcha Flurry',129,'matcha-flurry.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="strawberry flurry"
+                data-category="tea"
+            >
+
+                <div class="product-image fruit">
+
+                    <img
+                        src="strawberry-flurry.jpg"
+                        alt="Strawberry Flurry"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Strawberry Flurry
+                    </div>
+
+                    <div class="price">
+                        ₱129
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Strawberry Flurry',129,'strawberry-flurry.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="dark chocolate milk tea"
+                data-category="tea"
+            >
+
+                <div
+                    class="product-image"
+                    style="background:#d8c0ad"
+                >
+
+                    <img
+                        src="dark-chocolate-milk-tea.jpg"
+                        alt="Dark Chocolate Milk Tea"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Dark Chocolate Milk Tea
+                    </div>
+
+                    <div class="price">
+                        ₱129
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Dark Chocolate Milk Tea',129,'dark-chocolate-milk-tea.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="classic burger"
+                data-category="burger"
+            >
+
+                <div
+                    class="product-image"
+                    style="background:#e5c79f"
+                >
+
+                    <img
+                        src="ClassicBurger.jpg"
+                        alt="Classic Burger"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Classic Burger
+                    </div>
+
+                    <div class="price">
+                        ₱99
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Classic Burger',99,'Classic Burger.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="overload cheese burger"
+                data-category="burger"
+            >
+
+                <div
+                    class="product-image"
+                    style="background:#e7c994"
+                >
+
+                    <img
+                        src="OverloadCheeseBurger.jpg"
+                        alt="Overload Cheese Burger"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Overload Cheese Burger
+                    </div>
+
+                    <div class="price">
+                        ₱149
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Overload Cheese Burger',149,'Overload Cheese Burger.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="overload fries"
+                data-category="fries"
+            >
+
+                <div
+                    class="product-image"
+                    style="background:#f3d9a5"
+                >
+
+                    <img
+                        src="OverloadFries.jpg"
+                        alt="Overload Fries"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Overload Fries
+                    </div>
+
+                    <div class="price">
+                        ₱109
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Overload Fries',109,'Overload Fries.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="product"
+                data-name="dark forest cake"
+                data-category="cake"
+            >
+
+                <div
+                    class="product-image"
+                    style="background:#d6b9ae"
+                >
+
+                    <img
+                        src="DarkForestCake.jpg"
+                        alt="Dark Forest Cake"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Dark Forest Cake
+                    </div>
+
+                    <div class="price">
+                        ₱139
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Dark Forest Cake',139,'Dark Forest Cake.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="featured">
+
+            <div class="section-title">
+                Featured Meals
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-image">
+
+                    <img
+                        src="ChickenTonkatsuRiceMeal.jpg"
+                        alt="Chicken Tonkatsu Rice Meal"
+                    >
+
+                </div>
+
+                <div class="feature-info">
+
+                    <h3>
+                        Chicken Tonkatsu Rice Meal
+                    </h3>
+
+                    <p>
+                        Crispy chicken with rice and special sauce
+                    </p>
+
+                    <div class="feature-bottom">
+
+                        <div class="feature-price">
+                            ₱159
+                        </div>
+
+                        <button
+                            class="order-btn"
+                            onclick="addSimpleItem('Chicken Tonkatsu Rice Meal',159,'Chicken Tonkatsu Rice Meal.jpg')"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="bottom-nav">
+
+        <div
+            class="nav-item active"
+            onclick="openNav('home')"
+        >
+            <span class="nav-icon">⌂</span>
+            Home
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('orders')"
+        >
+            <span class="nav-icon">▣</span>
+            Orders
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('favorites')"
+        >
+            <span class="nav-icon">♡</span>
+            Favorites
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('profile')"
+        >
+            <span class="nav-icon">◉</span>
+            Profile
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 3 — CUSTOMIZE
+===================================================== -->
+
+<div class="screen" id="screen3">
+
+    <div class="speaker"></div>
+
+    <div class="inner-header">
+
+        <button
+            class="back"
+            onclick="showScreen(2)"
+        >
+            ←
+        </button>
+
+        <div class="inner-title">
+            Customize
+        </div>
+
+        <button
+            class="small-cart"
+            onclick="showCart()"
+        >
+            🛒
+        </button>
+
+    </div>
+
+
+    <div class="customize-main">
+
+        <div class="product-top">
+
+            <div class="custom-product-image">
+
+                <img
+                    src="Oreo Matcha Crème.jpg"
+                    alt="Oreo Matcha Crème"
+                >
+
+            </div>
+
+            <div class="product-details">
+
+                <h2>
+                    Oreo Matcha Crème
+                </h2>
+
+                <p>
+                    Matcha tea with creamy milk
+                    and Oreo toppings.
+                </p>
+
+                <div class="product-price">
+                    ₱119
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="custom-section">
+
+            <div class="custom-title">
+
+                <h3>
+                    1. Choose Size
+                </h3>
+
+                <span class="required">
+                    Required
+                </span>
+
+            </div>
+
+
+            <div class="options">
+
+                <div class="option">
+
+                    <input
+                        type="radio"
+                        name="size"
+                        id="medium"
+                        value="0"
+                        checked
+                        onchange="updateTotal()"
+                    >
+
+                    <label for="medium">
+                        Medium
+                    </label>
+
+                </div>
+
+                <div class="option">
+
+                    <input
+                        type="radio"
+                        name="size"
+                        id="large"
+                        value="20"
+                        onchange="updateTotal()"
+                    >
+
+                    <label for="large">
+                        Large +₱20
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="custom-section">
+
+            <div class="custom-title">
+
+                <h3>
+                    2. Sugar Level
+                </h3>
+
+                <span class="required">
+                    Choose one
+                </span>
+
+            </div>
+
+            <div class="sugar-options">
+
+                <div class="sugar">
+                    <input type="radio" name="sugar" id="s100" checked>
+                    <label for="s100">100%</label>
+                </div>
+
+                <div class="sugar">
+                    <input type="radio" name="sugar" id="s75">
+                    <label for="s75">75%</label>
+                </div>
+
+                <div class="sugar">
+                    <input type="radio" name="sugar" id="s50">
+                    <label for="s50">50%</label>
+                </div>
+
+                <div class="sugar">
+                    <input type="radio" name="sugar" id="s25">
+                    <label for="s25">25%</label>
+                </div>
+
+                <div class="sugar">
+                    <input type="radio" name="sugar" id="s0">
+                    <label for="s0">0%</label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="custom-section">
+
+            <div class="custom-title">
+
+                <h3>
+                    3. Add-ons
+                </h3>
+
+                <span class="required">
+                    Optional
+                </span>
+
+            </div>
+
+            <div class="addons">
+
+                <div class="addon">
+
+                    <div class="addon-left">
+
+                        <input
+                            type="checkbox"
+                            class="addon-check"
+                            data-price="15"
+                            onchange="updateTotal()"
+                        >
+
+                        <span class="addon-name">
+                            Pearls
+                        </span>
+
+                    </div>
+
+                    <span class="addon-price">
+                        +₱15
+                    </span>
+
+                </div>
+
+                <div class="addon">
+
+                    <div class="addon-left">
+
+                        <input
+                            type="checkbox"
+                            class="addon-check"
+                            data-price="20"
+                            onchange="updateTotal()"
+                        >
+
+                        <span class="addon-name">
+                            Cheesecake
+                        </span>
+
+                    </div>
+
+                    <span class="addon-price">
+                        +₱20
+                    </span>
+
+                </div>
+
+                <div class="addon">
+
+                    <div class="addon-left">
+
+                        <input
+                            type="checkbox"
+                            class="addon-check"
+                            data-price="15"
+                            onchange="updateTotal()"
+                        >
+
+                        <span class="addon-name">
+                            Crushed Oreo
+                        </span>
+
+                    </div>
+
+                    <span class="addon-price">
+                        +₱15
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="custom-section">
+
+            <div class="custom-title">
+
+                <h3>
+                    4. Special Request
+                </h3>
+
+                <span class="required">
+                    Optional
+                </span>
+
+            </div>
+
+            <textarea
+                placeholder="Anything else you'd like us to know?"
+            ></textarea>
+
+        </div>
+
+    </div>
+
+
+    <div class="custom-bottom">
+
+        <div class="total-row">
+
+            <span class="total-label">
+                Total
+            </span>
+
+            <span
+                class="total-price"
+                id="customTotal"
+            >
+                ₱119
+            </span>
+
+        </div>
+
+        <button
+            class="main-btn"
+            onclick="goCheckout()"
+        >
+            ADD TO CART & CONTINUE
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 4 — CHECKOUT
+===================================================== -->
+
+<div class="screen" id="screen4">
+
+    <div class="speaker"></div>
+
+    <div class="inner-header">
+
+        <button
+            class="back"
+            onclick="showScreen(3)"
+        >
+            ←
+        </button>
+
+        <div class="inner-title">
+            Checkout
+        </div>
+
+        <div style="width:34px"></div>
+
+    </div>
+
+    <div class="checkout-main">
+
+        <div class="progress">
+
+            <div class="step">✓</div>
+
+            <div class="line"></div>
+
+            <div class="step">2</div>
+
+            <div class="line"></div>
+
+            <div class="step">3</div>
+
+        </div>
+
+        <div class="checkout-section">
+
+            <div class="checkout-header">
+
+                <div class="checkout-title">
+                    Delivery Address
+                </div>
+
+                <div
+                    class="change"
+                    onclick="changeAddress()"
+                >
+                    Change
+                </div>
+
+            </div>
+
+            <div class="address-card">
+
+                <div class="address-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <div class="address-name">
+                        Love Joy Cabangonay
+                    </div>
+
+                    <div
+                        class="address-text"
+                        id="addressText"
+                    >
+                        Taft, Eastern Samar<br>
+                        Philippines
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkout-section">
+
+            <div class="checkout-header">
+
+                <div class="checkout-title">
+                    Payment Method
+                </div>
+
+            </div>
+
+            <div class="payment-list">
+
+                <div class="payment">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        id="gcash"
+                        checked
+                    >
+
+                    <label for="gcash">
+
+                        <span class="payment-icon">
+                            ₱
+                        </span>
+
+                        GCash
+
+                        <span class="radio"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="payment">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        id="cash"
+                    >
+
+                    <label for="cash">
+
+                        <span class="payment-icon">
+                            💵
+                        </span>
+
+                        Cash on Delivery
+
+                        <span class="radio"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="payment">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        id="card"
+                    >
+
+                    <label for="card">
+
+                        <span class="payment-icon">
+                            💳
+                        </span>
+
+                        Credit / Debit Card
+
+                        <span class="radio"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkout-section">
+
+            <div class="checkout-header">
+
+                <div class="checkout-title">
+                    Your Order
+                </div>
+
+                <div
+                    class="change"
+                    onclick="showScreen(3)"
+                >
+                    Edit
+                </div>
+
+            </div>
+
+            <div class="order-card">
+
+                <div class="order-item">
+
+                    <div class="item-image">
+
+                        <img
+                            src="Oreo Matcha Crème.jpg"
+                            alt="Oreo Matcha Crème"
+                        >
+
+                    </div>
+
+                    <div class="item-info">
+
+                        <div class="item-name">
+                            Oreo Matcha Crème
+                        </div>
+
+                        <div class="item-details">
+                            Medium • 100% Sugar
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="item-price"
+                        id="checkoutItemPrice"
+                    >
+                        ₱119
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkout-section">
+
+            <div class="checkout-header">
+
+                <div class="checkout-title">
+                    Price Summary
+                </div>
+
+            </div>
+
+            <div class="summary">
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <span id="subtotal">
+                        ₱119
+                    </span>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery Fee
+                    </span>
+
+                    <span>
+                        ₱40
+                    </span>
+
+                </div>
+
+                <div class="summary-row total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span id="checkoutTotal">
+                        ₱159
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="checkout-bottom">
+
+        <div class="delivery-row">
+
+            <div class="delivery">
+
+                Delivery
+
+                <strong>
+                    25–35 minutes
+                </strong>
+
+            </div>
+
+            <div
+                class="final-total"
+                id="finalTotal"
+            >
+                ₱159
+            </div>
+
+        </div>
+
+        <button
+            class="main-btn"
+            onclick="placeOrder()"
+        >
+            PLACE ORDER
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 5 — CONFIRMATION
+===================================================== -->
+
+<div class="screen" id="screen5">
+
+    <div class="speaker"></div>
+
+    <div class="confirm-header">
+
+        <div class="confirm-title">
+            Order Confirmed
+        </div>
+
+    </div>
+
+    <div class="confirm-main">
+
+        <div class="success-circle">
+
+            <div class="check">
+                ✓
+            </div>
+
+        </div>
+
+        <div class="success-title">
+            Thank You!
+        </div>
+
+        <div class="success-text">
+
+            Your order has been successfully placed.
+            We are preparing your delicious food and tea.
+
+        </div>
+
+        <div class="order-number">
+
+            <div class="order-label">
+                ORDER NUMBER
+            </div>
+
+            <div
+                class="order-id"
+                id="orderNumber"
+            >
+                #FS-2026-001
+            </div>
+
+        </div>
+
+        <div class="details">
+
+            <div class="details-title">
+                Order Details
+            </div>
+
+            <div class="detail-row">
+
+                <span>
+                    Item
+                </span>
+
+                <strong id="confirmationItem">
+                    Oreo Matcha Crème
+                </strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>
+                    Payment
+                </span>
+
+                <strong id="confirmationPayment">
+                    GCash
+                </strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="confirmationTotal">
+                    ₱159
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="delivery-card">
+
+            <div class="delivery-icon">
+                🛵
+            </div>
+
+            <div class="delivery-text">
+
+                <span>
+                    ESTIMATED DELIVERY
+                </span>
+
+                <strong>
+                    25–35 minutes
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="confirm-buttons">
+
+            <button
+                class="home-btn"
+                onclick="openNav('home')"
+            >
+                BACK TO HOME
+            </button>
+
+            <button
+                class="track-btn"
+                onclick="trackOrder()"
+            >
+                TRACK MY ORDER
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 6 — ORDERS
+===================================================== -->
+
+<div class="screen" id="screen6">
+
+    <div class="speaker"></div>
+
+    <div class="inner-header">
+
+        <button
+            class="back"
+            onclick="openNav('home')"
+        >
+            ←
+        </button>
+
+        <div class="inner-title">
+            My Orders
+        </div>
+
+        <div style="width:34px"></div>
+
+    </div>
+
+    <div class="customize-main">
+
+        <div class="section-title">
+            Recent Orders
+        </div>
+
+        <div
+            class="order-card"
+            style="margin-bottom:10px;"
+        >
+
+            <div class="order-item">
+
+                <div class="item-image">
+
+                    <img
+                        src="OreoMatchaCrème.jpg"
+                        alt="Oreo Matcha Crème"
+                    >
+
+                </div>
+
+                <div class="item-info">
+
+                    <div class="item-name">
+                        Oreo Matcha Crème
+                    </div>
+
+                    <div class="item-details">
+                        Medium • 100% Sugar
+                    </div>
+
+                    <div
+                        class="item-details"
+                        id="orderStatus"
+                        style="color:#319c94;font-weight:bold;"
+                    >
+                        Completed
+                    </div>
+
+                </div>
+
+                <div class="item-price">
+                    ₱159
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+
+        <div
+            class="nav-item"
+            onclick="openNav('home')"
+        >
+            <span class="nav-icon">⌂</span>
+            Home
+        </div>
+
+        <div
+            class="nav-item active"
+            onclick="openNav('orders')"
+        >
+            <span class="nav-icon">▣</span>
+            Orders
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('favorites')"
+        >
+            <span class="nav-icon">♡</span>
+            Favorites
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('profile')"
+        >
+            <span class="nav-icon">◉</span>
+            Profile
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 7 — FAVORITES
+===================================================== -->
+
+<div class="screen" id="screen7">
+
+    <div class="speaker"></div>
+
+    <div class="inner-header">
+
+        <button
+            class="back"
+            onclick="openNav('home')"
+        >
+            ←
+        </button>
+
+        <div class="inner-title">
+            Favorites
+        </div>
+
+        <div style="width:34px"></div>
+
+    </div>
+
+    <div class="customize-main">
+
+        <div class="section-title">
+            Your Favorite Items
+        </div>
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-image matcha">
+
+                    <img
+                        src="OreoMatchaCrème.jpg"
+                        alt="Oreo Matcha Crème"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Oreo Matcha Crème
+                    </div>
+
+                    <div class="price">
+                        ₱119
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="goCustomize()"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="product">
+
+                <div class="product-image fruit">
+
+                    <img
+                        src="OverloadFries.jpg"
+                        alt="Strawberry Flurry"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Strawberry Flurry
+                    </div>
+
+                    <div class="price">
+                        ₱129
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addSimpleItem('Strawberry Flurry',129,'strawberry-flurry.jpg')"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+
+        <div
+            class="nav-item"
+            onclick="openNav('home')"
+        >
+            <span class="nav-icon">⌂</span>
+            Home
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('orders')"
+        >
+            <span class="nav-icon">▣</span>
+            Orders
+        </div>
+
+        <div
+            class="nav-item active"
+            onclick="openNav('favorites')"
+        >
+            <span class="nav-icon">♡</span>
+            Favorites
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('profile')"
+        >
+            <span class="nav-icon">◉</span>
+            Profile
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 8 — PROFILE
+===================================================== -->
+
+<div class="screen" id="screen8">
+
+    <div class="speaker"></div>
+
+    <div class="inner-header">
+
+        <button
+            class="back"
+            onclick="openNav('home')"
+        >
+            ←
+        </button>
+
+        <div class="inner-title">
+            My Profile
+        </div>
+
+        <div style="width:34px"></div>
+
+    </div>
+
+    <div class="customize-main">
+
+        <div
+            style="
+                text-align:center;
+                margin-bottom:20px;
+            "
+        >
+
+            <div
+                class="profile"
+                style="
+                    width:75px;
+                    height:75px;
+                    margin:auto;
+                    font-size:35px;
+                "
+            >
+                👩🏻
+            </div>
+
+            <h2
+                style="
+                    font-family:Georgia,serif;
+                    font-size:18px;
+                    margin-top:10px;
+                    color:#18201e;
+                "
+            >
+                Love Joy Cabangonay
+            </h2>
+
+            <p
+                style="
+                    font-size:9px;
+                    color:#777;
+                    margin-top:4px;
+                "
+            >
+                lovejoy@example.com
+            </p>
+
+        </div>
+
+
+        <div
+            class="order-card"
+            style="margin-bottom:8px;"
+        >
+
+            <div
+                style="
+                    font-size:10px;
+                    font-weight:bold;
+                    color:#252b28;
+                    padding:5px;
+                    cursor:pointer;
+                "
+                onclick="accountSettings()"
+            >
+                ⚙ Account Settings
+            </div>
+
+        </div>
+
+
+        <div
+            class="order-card"
+            style="margin-bottom:8px;"
+        >
+
+            <div
+                style="
+                    font-size:10px;
+                    font-weight:bold;
+                    color:#252b28;
+                    padding:5px;
+                    cursor:pointer;
+                "
+                onclick="deliveryAddress()"
+            >
+                📍 Delivery Address
+            </div>
+
+        </div>
+
+
+        <div class="order-card">
+
+            <div
+                style="
+                    font-size:10px;
+                    font-weight:bold;
+                    color:#252b28;
+                    padding:5px;
+                    cursor:pointer;
+                "
+                onclick="logout()"
+            >
+                🚪 Log Out
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="bottom-nav">
+
+        <div
+            class="nav-item"
+            onclick="openNav('home')"
+        >
+            <span class="nav-icon">⌂</span>
+            Home
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('orders')"
+        >
+            <span class="nav-icon">▣</span>
+            Orders
+        </div>
+
+        <div
+            class="nav-item"
+            onclick="openNav('favorites')"
+        >
+            <span class="nav-icon">♡</span>
+            Favorites
+        </div>
+
+        <div
+            class="nav-item active"
+            onclick="openNav('profile')"
+        >
+            <span class="nav-icon">◉</span>
+            Profile
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     OVERLAY
+===================================================== -->
+
+<div
+    class="panel-overlay"
+    id="panelOverlay"
+    onclick="closePanels()"
+></div>
+
+
+<!-- =====================================================
+     NOTIFICATION PANEL
+===================================================== -->
+
+<div
+    class="notification-panel"
+    id="notificationPanel"
+>
+
+    <button
+        class="panel-close"
+        onclick="closePanels()"
+    >
+        ×
+    </button>
+
+    <div class="panel-title">
+        Notifications 🔔
+    </div>
+
+    <div class="notification-item">
+
+        <strong>
+            Welcome to Focca Sip!
+        </strong>
+
+        <span>
+            Enjoy our delicious drinks, meals, cakes and snacks.
+        </span>
+
+    </div>
+
+    <div class="notification-item">
+
+        <strong>
+            New Menu Available
+        </strong>
+
+        <span>
+            Check out our Matcha Flurry, cakes, burgers and fries.
+        </span>
+
+    </div>
+
+    <div class="notification-item">
+
+        <strong>
+            Fast Delivery
+        </strong>
+
+        <span>
+            Your orders can arrive in approximately 25–35 minutes.
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CART PANEL
+===================================================== -->
+
+<div
+    class="cart-panel"
+    id="cartPanel"
+>
+
+    <button
+        class="panel-close"
+        onclick="closePanels()"
+    >
+        ×
+    </button>
+
+    <div class="panel-title">
+        My Cart 🛒
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div
+        class="cart-total"
+        id="cartTotal"
+        style="display:none;"
+    >
+
+        <span>
+            Total
+        </span>
+
+        <span id="cartTotalPrice">
+            ₱0
+        </span>
+
+    </div>
+
+    <button
+        class="panel-btn"
+        id="cartCheckoutButton"
+        style="display:none;"
+        onclick="closePanels(); goCheckout();"
+    >
+        CONTINUE TO CHECKOUT
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     ACCOUNT SETTINGS PANEL
+===================================================== -->
+
+<div
+    class="settings-panel"
+    id="settingsPanel"
+>
+
+    <button
+        class="panel-close"
+        onclick="closePanels()"
+    >
+        ×
+    </button>
+
+    <div class="panel-title">
+        Account Settings ⚙
+    </div>
+
+    <label class="panel-label">
+        Name
+    </label>
+
+    <input
+        class="panel-input"
+        id="settingsName"
+        type="text"
+        value="Love Joy Cabangonay"
+    >
+
+    <label class="panel-label">
+        Email
+    </label>
+
+    <input
+        class="panel-input"
+        id="settingsEmail"
+        type="email"
+        value="lovejoy@example.com"
+    >
+
+    <div class="setting-row">
+
+        <span>
+            Notifications
+        </span>
+
+        <input
+            type="checkbox"
+            id="notificationSetting"
+            checked
+        >
+
+    </div>
+
+    <div class="setting-row">
+
+        <span>
+            Save Login
+        </span>
+
+        <input
+            type="checkbox"
+            id="saveLoginSetting"
+            checked
+        >
+
+    </div>
+
+    <button
+        class="panel-btn"
+        onclick="saveAccountSettings()"
+    >
+        SAVE SETTINGS
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     DELIVERY ADDRESS PANEL
+===================================================== -->
+
+<div
+    class="address-panel"
+    id="addressPanel"
+>
+
+    <button
+        class="panel-close"
+        onclick="closePanels()"
+    >
+        ×
+    </button>
+
+    <div class="panel-title">
+        Delivery Address 📍
+    </div>
+
+    <label class="panel-label">
+        Full Address
+    </label>
+
+    <textarea
+        class="panel-input"
+        id="addressInput"
+        style="height:80px;padding-top:10px;resize:none;"
+    >Taft, Eastern Samar
+Philippines</textarea>
+
+    <button
+        class="panel-btn"
+        onclick="saveDeliveryAddress()"
+    >
+        SAVE ADDRESS
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<div
+    class="message"
+    id="message"
+></div>
+
+
+<script>
+
+/* =========================================================
+   SCREEN NAVIGATION
+========================================================= */
+
+function showScreen(number) {
+
+    const screens =
+        document.querySelectorAll(".screen");
+
+    screens.forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    const selectedScreen =
+        document.getElementById("screen" + number);
+
+    if (selectedScreen) {
+        selectedScreen.classList.add("active");
+    }
+
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+========================================================= */
+
+function openNav(page) {
+
+    closePanels();
+
+    if (page === "home") {
+        showScreen(2);
+    }
+
+    else if (page === "orders") {
+        showScreen(6);
+    }
+
+    else if (page === "favorites") {
+        showScreen(7);
+    }
+
+    else if (page === "profile") {
+        showScreen(8);
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    if (email === "" || password === "") {
+
+        showMessage(
+            "Please enter your email and password."
+        );
+
+        return;
+    }
+
+    showMessage(
+        "Login successful!"
+    );
+
+    setTimeout(() => {
+        showScreen(2);
+    }, 700);
+
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    }
+
+    else {
+        password.type = "password";
+    }
+
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+function forgotPassword() {
+
+    showMessage(
+        "Password reset selected"
+    );
+
+}
+
+
+/* =========================================================
+   CUSTOMIZE
+========================================================= */
+
+function goCustomize() {
+
+    showScreen(3);
+
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+let basePrice = 119;
+let currentTotal = 119;
+
+
+function updateTotal() {
+
+    let total = basePrice;
+
+    const selectedSize =
+        document.querySelector(
+            'input[name="size"]:checked'
+        );
+
+    if (selectedSize) {
+        total += Number(selectedSize.value);
+    }
+
+    const addons =
+        document.querySelectorAll(".addon-check");
+
+    addons.forEach(addon => {
+
+        if (addon.checked) {
+            total += Number(addon.dataset.price);
+        }
+
+    });
+
+    currentTotal = total;
+
+    document.getElementById(
+        "customTotal"
+    ).textContent = "₱" + total;
+
+    const checkoutItemPrice =
+        document.getElementById(
+            "checkoutItemPrice"
+        );
+
+    const subtotal =
+        document.getElementById("subtotal");
+
+    const checkoutTotal =
+        document.getElementById("checkoutTotal");
+
+    const finalTotal =
+        document.getElementById("finalTotal");
+
+    if (checkoutItemPrice) {
+        checkoutItemPrice.textContent =
+            "₱" + total;
+    }
+
+    if (subtotal) {
+        subtotal.textContent =
+            "₱" + total;
+    }
+
+    const final = total + 40;
+
+    if (checkoutTotal) {
+        checkoutTotal.textContent =
+            "₱" + final;
+    }
+
+    if (finalTotal) {
+        finalTotal.textContent =
+            "₱" + final;
+    }
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function goCheckout() {
+
+    updateTotal();
+
+    cartCount++;
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = cartCount;
+
+    /*
+     * Add the customized Oreo Matcha Crème
+     * to the actual cart.
+     */
+
+    const existing =
+        cartItems.find(
+            item => item.name === "Oreo Matcha Crème"
+        );
+
+    if (existing) {
+
+        existing.quantity++;
+
+    }
+
+    else {
+
+        cartItems.push({
+            name: "Oreo Matcha Crème",
+            price: currentTotal,
+            image: "Oreo Matcha Crème.jpg",
+            quantity: 1
+        });
+
+    }
+
+    showScreen(4);
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+function placeOrder() {
+
+    updateTotal();
+
+    const payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+    let paymentName = "GCash";
+
+    if (payment) {
+
+        if (payment.id === "cash") {
+            paymentName = "Cash on Delivery";
+        }
+
+        else if (payment.id === "card") {
+            paymentName = "Credit / Debit Card";
+        }
+
+    }
+
+    document.getElementById(
+        "confirmationPayment"
+    ).textContent = paymentName;
+
+    document.getElementById(
+        "confirmationTotal"
+    ).textContent =
+        "₱" + (currentTotal + 40);
+
+    showScreen(5);
+
+    showMessage(
+        "Order placed successfully!"
+    );
+
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+let cartCount = 0;
+
+let cartItems = [];
+
+
+/* =========================================================
+   SHOW CART — FIXED
+========================================================= */
+
+function showCart() {
+
+    const panel =
+        document.getElementById("cartPanel");
+
+    const overlay =
+        document.getElementById("panelOverlay");
+
+    const cartContainer =
+        document.getElementById("cartItems");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+    const cartTotalPrice =
+        document.getElementById("cartTotalPrice");
+
+    const checkoutButton =
+        document.getElementById("cartCheckoutButton");
+
+
+    cartContainer.innerHTML = "";
+
+
+    if (cartItems.length === 0) {
+
+        cartContainer.innerHTML =
+            '<div class="cart-empty">' +
+            'Your cart is empty 🛒' +
+            '</div>';
+
+        cartTotal.style.display = "none";
+        checkoutButton.style.display = "none";
+
+    }
+
+    else {
+
+        let total = 0;
+
+        cartItems.forEach((item, index) => {
+
+            total +=
+                item.price * item.quantity;
+
+            const cartItem =
+                document.createElement("div");
+
+            cartItem.className =
+                "cart-item";
+
+            cartItem.innerHTML = `
+
+                <div class="cart-item-image">
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                        onerror="this.style.display='none'"
+                    >
+
+                </div>
+
+                <div class="cart-item-info">
+
+                    <div class="cart-item-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="cart-item-price">
+                        ₱${item.price} × ${item.quantity}
+                    </div>
+
+                </div>
+
+                <button
+                    onclick="removeCartItem(${index})"
+                    style="
+                        width:24px;
+                        height:24px;
+                        border:none;
+                        border-radius:50%;
+                        background:#f0eee3;
+                        color:#777;
+                    "
+                >
+                    ×
+                </button>
+
+            `;
+
+            cartContainer.appendChild(cartItem);
+
+        });
+
+
+        cartTotalPrice.textContent =
+            "₱" + total;
+
+        cartTotal.style.display =
+            "flex";
+
+        checkoutButton.style.display =
+            "block";
+
+    }
+
+
+    panel.style.display = "block";
+    overlay.style.display = "block";
+
+}
+
+
+/* =========================================================
+   ADD SIMPLE ITEM — FIXED
+========================================================= */
+
+function addSimpleItem(
+    name,
+    price,
+    image = ""
+) {
+
+    cartCount++;
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = cartCount;
+
+
+    const existing =
+        cartItems.find(
+            item => item.name === name
+        );
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    }
+
+    else {
+
+        cartItems.push({
+
+            name: name,
+
+            price: price,
+
+            image: image,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    showMessage(
+        name + " added to cart"
+    );
+
+}
+
+
+/* =========================================================
+   REMOVE CART ITEM
+========================================================= */
+
+function removeCartItem(index) {
+
+    if (!cartItems[index]) {
+        return;
+    }
+
+    cartCount -=
+        cartItems[index].quantity;
+
+    if (cartCount < 0) {
+        cartCount = 0;
+    }
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = cartCount;
+
+
+    cartItems.splice(index, 1);
+
+    showCart();
+
+    showMessage(
+        "Item removed from cart"
+    );
+
+}
+
+
+/* =========================================================
+   NOTIFICATIONS — FIXED
+========================================================= */
+
+function showNotifications() {
+
+    closePanels();
+
+    document.getElementById(
+        "notificationPanel"
+    ).style.display = "block";
+
+    document.getElementById(
+        "panelOverlay"
+    ).style.display = "block";
+
+}
+
+
+/* =========================================================
+   ACCOUNT SETTINGS — FIXED
+========================================================= */
+
+function accountSettings() {
+
+    closePanels();
+
+    document.getElementById(
+        "settingsPanel"
+    ).style.display = "block";
+
+    document.getElementById(
+        "panelOverlay"
+    ).style.display = "block";
+
+}
+
+
+/* =========================================================
+   SAVE ACCOUNT SETTINGS
+========================================================= */
+
+function saveAccountSettings() {
+
+    const name =
+        document.getElementById(
+            "settingsName"
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            "settingsEmail"
+        ).value.trim();
+
+
+    if (name === "" || email === "") {
+
+        showMessage(
+            "Please complete your information."
+        );
+
+        return;
+
+    }
+
+
+    const profileName =
+        document.querySelector(
+            "#screen8 h2"
+        );
+
+    const profileEmail =
+        document.querySelector(
+            "#screen8 p"
+        );
+
+
+    if (profileName) {
+        profileName.textContent = name;
+    }
+
+    if (profileEmail) {
+        profileEmail.textContent = email;
+    }
+
+
+    closePanels();
+
+    showMessage(
+        "Account settings saved!"
+    );
+
+}
+
+
+/* =========================================================
+   DELIVERY ADDRESS — FIXED
+========================================================= */
+
+function deliveryAddress() {
+
+    closePanels();
+
+    const currentAddress =
+        document.getElementById(
+            "addressText"
+        ).innerText;
+
+    document.getElementById(
+        "addressInput"
+    ).value = currentAddress;
+
+
+    document.getElementById(
+        "addressPanel"
+    ).style.display = "block";
+
+    document.getElementById(
+        "panelOverlay"
+    ).style.display = "block";
+
+}
+
+
+/* =========================================================
+   SAVE DELIVERY ADDRESS
+========================================================= */
+
+function saveDeliveryAddress() {
+
+    const newAddress =
+        document.getElementById(
+            "addressInput"
+        ).value.trim();
+
+
+    if (newAddress === "") {
+
+        showMessage(
+            "Please enter an address."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "addressText"
+    ).innerHTML =
+        newAddress.replace(
+            /\n/g,
+            "<br>"
+        );
+
+
+    closePanels();
+
+    showMessage(
+        "Delivery address updated!"
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE ADDRESS
+========================================================= */
+
+function changeAddress() {
+
+    const currentAddress =
+        document.getElementById(
+            "addressText"
+        ).innerText;
+
+    document.getElementById(
+        "addressInput"
+    ).value = currentAddress;
+
+
+    closePanels();
+
+
+    document.getElementById(
+        "addressPanel"
+    ).style.display = "block";
+
+    document.getElementById(
+        "panelOverlay"
+    ).style.display = "block";
+
+}
+
+
+/* =========================================================
+   CLOSE ALL PANELS
+========================================================= */
+
+function closePanels() {
+
+    document.getElementById(
+        "notificationPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "cartPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "settingsPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "addressPanel"
+    ).style.display = "none";
+
+    document.getElementById(
+        "panelOverlay"
+    ).style.display = "none";
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchProducts() {
+
+    const input =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const products =
+        document.querySelectorAll(
+            "#products .product"
+        );
+
+    products.forEach(product => {
+
+        const name =
+            product
+                .getAttribute("data-name")
+                .toLowerCase();
+
+        if (name.includes(input)) {
+
+            product.style.display = "";
+
+        }
+
+        else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+function filterCategory(category) {
+
+    const products =
+        document.querySelectorAll(
+            "#products .product"
+        );
+
+    products.forEach(product => {
+
+        const productCategory =
+            product.getAttribute("data-category");
+
+        if (
+            productCategory === category
+        ) {
+
+            product.style.display = "";
+
+        }
+
+        else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+    showMessage(
+        category.charAt(0).toUpperCase() +
+        category.slice(1) +
+        " selected"
+    );
+
+}
+
+
+/* =========================================================
+   SHOW ALL PRODUCTS
+========================================================= */
+
+function showAllProducts() {
+
+    const products =
+        document.querySelectorAll(
+            "#products .product"
+        );
+
+    products.forEach(product => {
+        product.style.display = "";
+    });
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
+    showMessage(
+        "Showing all products"
+    );
+
+}
+
+
+/* =========================================================
+   TRACK ORDER — FIXED
+========================================================= */
+
+function trackOrder() {
+
+    const orderStatus =
+        document.getElementById("orderStatus");
+
+    if (orderStatus) {
+
+        orderStatus.textContent =
+            "Preparing 🚚";
+
+        orderStatus.style.color =
+            "#319c94";
+
+    }
+
+    showMessage(
+        "Your order is being prepared 🚚"
+    );
+
+    setTimeout(() => {
+
+        openNav("orders");
+
+        if (orderStatus) {
+
+            orderStatus.textContent =
+                "Preparing 🚚";
+
+        }
+
+    }, 900);
+
+}
+
+
+/* =========================================================
+   LOG OUT
+========================================================= */
+
+function logout() {
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to log out?"
+        );
+
+    if (confirmLogout) {
+
+        showMessage(
+            "You have been logged out"
+        );
+
+        setTimeout(() => {
+            showScreen(1);
+        }, 700);
+
+    }
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(text) {
+
+    const message =
+        document.getElementById("message");
+
+    message.textContent = text;
+
+    message.style.display = "block";
+
+    setTimeout(() => {
+
+        message.style.display = "none";
+
+    }, 2000);
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateTotal();
+
+</script>
+
+</body>
+</html>
